@@ -1,19 +1,37 @@
 import React, { Component } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route } from 'react-router-dom'
+
+import configureStore from './store'
+import fetchProducts from './actions/fetch-products-action'
+
+import HeaderPartial from './partials/header-partial'
+import ProductListPartial from './partials/product-list-partial'
+import ProductItemPartial from './partials/product-item-partial'
+
+import 'semantic-ui-css/semantic.css'
+import './stylesheet.css'
+
+const store = configureStore()
 
 class App extends Component {
+  componentDidMount() {
+    store.dispatch(fetchProducts())
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <BrowserRouter>
+        <Provider store={store}>
+          <div>
+            <HeaderPartial />
+            <div className='ui main container'>
+              <Route exact path="/" component={ProductListPartial} />
+              <Route exact path="/product/:_id/" component={ProductItemPartial} />
+            </div>
+          </div>
+        </Provider>
+      </BrowserRouter>
     )
   }
 }
