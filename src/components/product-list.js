@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react'
 
 import ProductItem from './product-item'
 
-export default function ProductList({ items }) {
+export default function ProductList({ items, addToCart }) {
   return (
     <div className="ui five column doubling cards">
       {items.map(item =>
-        <ProductItem key={item._id} {...item} />)}
+        <ProductItem key={item._id} addToCart={addToCart} {...item} />)}
     </div>
   )
 }
@@ -19,4 +19,5 @@ ProductList.propTypes = {
       price: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  addToCart: PropTypes.func.isRequired,
 }

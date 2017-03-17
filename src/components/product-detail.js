@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-export default function ProductDetail({ _id, image, price, description, stock }) {
+export default function ProductDetail({ _id, image, price, description, stock, addToCart }) {
   return (
     <div className="ui items">
       <div className="item">
@@ -18,6 +18,11 @@ export default function ProductDetail({ _id, image, price, description, stock })
           <div className="extra">
             Remaining stock: {stock.remaining} item(s)
           </div>
+          <div className="extra">
+            <button className='ui green button' onClick={() => addToCart(_id)}>
+              Add to cart
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -32,4 +37,5 @@ ProductDetail.propTypes = {
   stock: PropTypes.shape({
     remaining: PropTypes.number.isRequired,
   }).isRequired,
+  addToCart: PropTypes.func.isRequired,
 }

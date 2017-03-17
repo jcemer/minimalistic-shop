@@ -1,28 +1,30 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { ProductItemPartial, mapStateToProps } from '../product-item-partial'
+import { ProductDetailPartial, mapStateToProps } from '../product-detail-partial'
 import ProductDetail from '../../components/product-detail'
 
-describe('ProductItemPartial', () => {
+describe('ProductDetailPartial', () => {
   describe('<Component />', () => {
+    const addToCart = () => {}
+
     it('should not render if it is not ready', () => {
-      const wrapper = shallow(<ProductItemPartial />)
+      const wrapper = shallow(<ProductDetailPartial addToCart={addToCart} />)
 
       expect(wrapper.children().exists()).toBe(false)
     })
 
     it('should render "not found" without item', () => {
-      const wrapper = shallow(<ProductItemPartial isReady />)
+      const wrapper = shallow(<ProductDetailPartial addToCart={addToCart} isReady />)
 
       expect(wrapper.contains('Product not found')).toBe(true)
     })
 
     it('should render ProductDetail with item', () => {
       const item = { _id: '123', image: 'url', price: '$1', description: 'bla', stock: { remaining: 1 } }
-      const wrapper = shallow(<ProductItemPartial isReady item={item} />)
+      const wrapper = shallow(<ProductDetailPartial addToCart={addToCart} isReady item={item} />)
 
-      expect(wrapper.contains(<ProductDetail {...item} />)).toBe(true)
+      expect(wrapper.contains(<ProductDetail addToCart={addToCart} {...item} />)).toBe(true)
     })
   })
 

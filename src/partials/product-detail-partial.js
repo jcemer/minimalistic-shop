@@ -1,10 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
-import ProductDetail from '../components/product-detail'
 import { Link } from 'react-router-dom'
+import _find from 'lodash/find'
 
-export function ProductItemPartial({ isReady, item }) {
+import { addToCart } from '../actions/cart'
+import ProductDetail from '../components/product-detail'
+
+export function ProductDetailPartial({ isReady, item, addToCart }) {
   if (!isReady) return null
   if (!item) return <span>Product not found</span>
 
@@ -15,7 +17,7 @@ export function ProductItemPartial({ isReady, item }) {
         <i className="right angle icon divider"></i>
         <div className="active section">Product</div>
       </div>
-      <ProductDetail {...item} />
+      <ProductDetail addToCart={addToCart} {...item} />
     </div>
   )
 }
@@ -25,8 +27,7 @@ export const mapStateToProps = (
   { match: { params: { _id } } }
 ) => {
   if (!isReady) return { isReady: false, item: undefined }
-  const item = items.find((item) => item._id === _id)
-  return { isReady, item }
+  return { isReady, item: _find(items, { _id }) }
 }
 
-export default connect(mapStateToProps)(ProductItemPartial)
+export default connect(mapStateToProps, { addToCart })(ProductDetailPartial)
