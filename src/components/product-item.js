@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router-dom'
 
-export default function ProductItem({ _id, image, price, addToCart }) {
+import AddToCartButton from './add-to-cart-button'
+
+export default function ProductItem({ _id, image, price, stock, addToCart }) {
   return (
     <div className='ui card'>
       <Link className='image' to={`/product/${_id}`}>
@@ -12,9 +14,7 @@ export default function ProductItem({ _id, image, price, addToCart }) {
       </div>
       <div className='extra content'>
         <div className='ui two buttons'>
-          <button className='ui green button' onClick={() => addToCart(_id)}>
-            Add to cart
-          </button>
+          <AddToCartButton _id={_id} stock={stock} addToCart={addToCart} />
         </div>
       </div>
     </div>
@@ -25,5 +25,8 @@ ProductItem.propTypes = {
   _id: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
   price: PropTypes.string.isRequired,
+  stock: PropTypes.shape({
+    remaining: PropTypes.number.isRequired,
+  }).isRequired,
   addToCart: PropTypes.func.isRequired,
 }

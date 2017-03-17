@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react'
 
+import AddToCartButton from './add-to-cart-button'
+
 export default function ProductDetail({ _id, image, price, description, stock, addToCart }) {
   return (
     <div className="ui items">
@@ -19,9 +21,7 @@ export default function ProductDetail({ _id, image, price, description, stock, a
             Remaining stock: {stock.remaining} item(s)
           </div>
           <div className="extra">
-            <button className='ui green button' onClick={() => addToCart(_id)}>
-              Add to cart
-            </button>
+            <AddToCartButton _id={_id} stock={stock} addToCart={addToCart} />
           </div>
         </div>
       </div>
