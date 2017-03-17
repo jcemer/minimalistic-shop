@@ -5,8 +5,7 @@ import ProductItem from './product-item'
 export default function ProductList({ items, addToCart }) {
   return (
     <div className="ui five column doubling cards">
-      {items.map(item =>
-        <ProductItem key={item._id} addToCart={addToCart} {...item} />)}
+      {items.map(item => <ProductItem key={item._id} addToCart={addToCart} {...item} />)}
     </div>
   )
 }
@@ -17,7 +16,7 @@ ProductList.propTypes = {
       _id: PropTypes.string.isRequired,
       image: PropTypes.string.isRequired,
       price: PropTypes.string.isRequired,
-    }).isRequired,
+    }).isRequired
   ).isRequired,
-  addToCart: PropTypes.func.isRequired,
+  addToCart: PropTypes.func.isRequired
 }

@@ -29,7 +29,7 @@ describe('ProductDetailPartial', () => {
   })
 
   describe('mapStateToProps', () => {
-    it('should returns no item if it is not ready', () => {
+    it('should returns no item if products is not ready', () => {
       const props = mapStateToProps(
         { products: { isReady: false } },
         { match: { params: { _id: 1 } } }
@@ -38,7 +38,7 @@ describe('ProductDetailPartial', () => {
       expect(props).toEqual({ isReady: false, item: undefined })
     })
 
-    it('should returns item matched by "_id"', () => {
+    it('should returns matched item by "_id" if products is ready', () => {
       const item = { _id: 1 }
       const props = mapStateToProps(
         { products: { isReady: true, items: [{ _id: 0 }, item] } },

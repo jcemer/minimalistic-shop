@@ -4,13 +4,13 @@ import AddToCartButton from './add-to-cart-button'
 
 export default function ProductDetail({ _id, image, price, description, stock, addToCart }) {
   return (
-    <div className="ui items">
+    <div className="ui unstackable items">
       <div className="item">
         <div className="image">
           <img src={image} alt={`Product ${_id}`} />
         </div>
         <div className="content">
-          <div className="header">Product {_id}</div>
+          <div className="ui header">Product {_id}</div>
           <div className="meta">
             Price {price}
           </div>
@@ -35,7 +35,7 @@ ProductDetail.propTypes = {
   price: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   stock: PropTypes.shape({
-    remaining: PropTypes.number.isRequired,
+    remaining: PropTypes.number.isRequired
   }).isRequired,
   addToCart: PropTypes.func.isRequired,
 }
