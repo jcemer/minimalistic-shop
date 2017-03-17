@@ -7,11 +7,16 @@ export default function cartReducer(state = { items: {} }, action) {
       const quantity = _get(state.items[_id], 'quantity', 0) + 1
 
       return {
-        ...state,
         items: {
           ...state.items,
           [_id]: { _id, image, quantity }
         }
+      }
+
+    case 'CHECKOUT':
+      return {
+        purchased: true,
+        items: {}
       }
 
     default:

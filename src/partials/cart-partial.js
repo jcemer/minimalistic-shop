@@ -1,19 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
+import { checkout } from '../actions/cart'
 import Cart from '../components/cart'
 
-export function CartPartial({ items }){
+export function CartPartial(props) {
   return (
     <div>
       <div className="ui header">Shopping Cart</div>
-      <Cart items={items} />
+      <Cart {...props} />
     </div>
   )
 }
 
 export const mapStateToProps = (
-  { cart: { items } }
-) => ({ items })
+  { cart: { purchased, items } }
+) => ({ purchased, items })
 
-export default connect(mapStateToProps)(CartPartial)
+export default connect(mapStateToProps, { checkout })(CartPartial)

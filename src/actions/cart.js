@@ -10,3 +10,7 @@ export const addToCart = _id => (dispatch, getState) => {
     })
   }
 }
+
+export const checkout = () => ({
+  type: 'CHECKOUT'
+})

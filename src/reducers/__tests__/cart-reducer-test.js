@@ -17,4 +17,13 @@ describe('cartReducer', () => {
 
     expect(state.items['123'].quantity).toEqual(3)
   })
+
+  it('should empty items and set purchased for CHECKOUT', () => {
+    const items = {
+      '356': { _id: '356', image: 'url', quantity: 20 }
+    }
+    const state = cartReducer({ items }, { type: 'CHECKOUT' })
+
+    expect(state).toEqual({ purchased: true, items: {} })
+  })
 })
