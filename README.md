@@ -7,3 +7,9 @@ A React-Redux shopping cart.
 ```
 yarn && yarn start
 ```
+
+## Deploy
+
+```
+yarn deploy
+```
