@@ -22,9 +22,12 @@ describe('productsReducer', () => {
   })
 
   it('should returns items with reduced remaining stock for ADD_TO_CART', () => {
-    const items = [{ _id: '123', stock: { remaining: 2 } }]
+    const items = [
+      { _id: '356', stock: { remaining: 20 } },
+      { _id: '123', stock: { remaining: 2 } }
+    ]
     const state = productsReducer({ items }, { type: 'ADD_TO_CART', product: { _id: '123' } })
 
-    expect(state.items[0].stock.remaining).toEqual(1)
+    expect(state.items[1].stock.remaining).toEqual(1)
   })
 })
