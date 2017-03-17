@@ -13,9 +13,7 @@ export default function ProductItem({ _id, image, price, stock, addToCart }) {
         <div>Price {price}</div>
       </div>
       <div className="extra content">
-        <div className="ui two buttons">
-          <AddToCartButton _id={_id} stock={stock} addToCart={addToCart} />
-        </div>
+        <AddToCartButton fluid _id={_id} stock={stock} addToCart={addToCart} />
       </div>
     </div>
   )
