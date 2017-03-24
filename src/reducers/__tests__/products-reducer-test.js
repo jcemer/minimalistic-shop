@@ -11,14 +11,14 @@ describe('productsReducer', () => {
   it('should returns isPending for FETCH_PRODUCTS_PENDING', () => {
     const state = productsReducer({}, { type: 'FETCH_PRODUCTS_PENDING' })
 
-    expect(state).toEqual({ isPending: true })
+    expect(state).toEqual({ isPending: true, isReady: false, items: [] })
   })
 
   it('should returns isReady and items for FETCH_PRODUCTS_FULFILLED', () => {
     const items = []
     const state = productsReducer({}, { type: 'FETCH_PRODUCTS_FULFILLED', payload: items })
 
-    expect(state).toEqual({ isReady: true, items })
+    expect(state).toEqual({ isPending: false, isReady: true, items })
   })
 
   it('should returns items with reduced remaining stock for ADD_TO_CART', () => {

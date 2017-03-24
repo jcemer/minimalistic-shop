@@ -1,12 +1,23 @@
-export default function productsReducer(state = {}, action) {
+const initialState = {
+  isPending: false,
+  isReady: false,
+  items: []
+}
+
+export default function productsReducer(state = initialState, action) {
   switch (action.type) {
     case 'FETCH_PRODUCTS_PENDING':
       return {
+        ...state,
         isPending: true,
+        isReady: false,
+        items: []
       }
 
     case 'FETCH_PRODUCTS_FULFILLED':
       return {
+        ...state,
+        isPending: false,
         isReady: true,
         items: action.payload,
       }
