@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import { Link } from 'react-router-dom'
 
-import AddToCartButton from './add-to-cart-button'
+import AddToCartButton from './AddToCartButton'
 
-export default function ProductItem({ _id, image, price, stock, addToCart }) {
+const ProductItem = ({ _id, image, price, stock, addToCart }) => {
   return (
     <div className="ui card">
       <Link className="ui image" to={`/product/${_id}`}>
@@ -28,3 +28,5 @@ ProductItem.propTypes = {
   }).isRequired,
   addToCart: PropTypes.func.isRequired
 }
+
+export default ProductItem

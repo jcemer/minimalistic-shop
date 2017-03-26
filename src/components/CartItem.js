@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react'
 
-export default function CartItem({ _id, image, quantity }) {
+const CartItem = ({ _id, image, quantity }) => {
   return (
     <div className="ui item">
       <div className="ui tiny image">
@@ -19,3 +19,5 @@ CartItem.propTypes = {
   image: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired
 }
+
+export default CartItem

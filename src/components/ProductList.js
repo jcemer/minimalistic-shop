@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 
-import ProductItem from './product-item'
+import ProductItem from './ProductItem'
 
-export default function ProductList({ items, addToCart }) {
+const ProductList = ({ items, addToCart }) => {
   return (
     <div className="ui five column doubling cards">
       {items.map(item => <ProductItem key={item._id} addToCart={addToCart} {...item} />)}
@@ -20,3 +20,5 @@ ProductList.propTypes = {
   ).isRequired,
   addToCart: PropTypes.func.isRequired
 }
+
+export default ProductList

@@ -1,22 +1,22 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import { ProductListPartial, mapStateToProps } from '../product-list-partial'
-import ProductList from '../../components/product-list'
+import { ProductListContainer, mapStateToProps } from '../ProductListContainer'
+import ProductList from '../../components/ProductList'
 
-describe('ProductListPartial', () => {
+describe('ProductListContainer', () => {
   const addToCart = () => {}
 
   describe('<Component />', () => {
     it('should not render if it is not ready', () => {
-      const wrapper = shallow(<ProductListPartial addToCart={addToCart} />)
+      const wrapper = shallow(<ProductListContainer addToCart={addToCart} />)
 
       expect(wrapper.children().exists()).toBe(false)
     })
 
     it('should render ProductList with items', () => {
       const items = [{ _id: '123', image: 'url', price: '$1' }]
-      const wrapper = shallow(<ProductListPartial addToCart={addToCart} isReady items={items} />)
+      const wrapper = shallow(<ProductListContainer addToCart={addToCart} isReady items={items} />)
 
       expect(wrapper.contains(<ProductList addToCart={addToCart} items={items} />)).toBe(true)
     })

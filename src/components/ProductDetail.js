@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 
-import AddToCartButton from './add-to-cart-button'
+import AddToCartButton from './AddToCartButton'
 
-export default function ProductDetail({ _id, image, price, description, stock, addToCart }) {
+const ProductDetail = ({ _id, image, price, description, stock, addToCart }) => {
   return (
     <div className="ui unstackable items">
       <div className="item">
@@ -39,3 +39,5 @@ ProductDetail.propTypes = {
   }).isRequired,
   addToCart: PropTypes.func.isRequired,
 }
+
+export default ProductDetail

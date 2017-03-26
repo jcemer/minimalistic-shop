@@ -1,8 +1,8 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import ProductList from '../product-list'
-import ProductItem from '../product-item'
+import ProductList from '../ProductList'
+import ProductItem from '../ProductItem'
 
 describe('<ProductList />', () => {
   const addToCart = () => {}

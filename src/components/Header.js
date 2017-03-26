@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function HeaderPartial() {
+ const Header = () => {
   return (
     <div className='ui fixed inverted menu'>
       <div className='ui container'>
@@ -11,4 +11,4 @@ function HeaderPartial() {
   )
 }
 
-export default HeaderPartial
+export default Header

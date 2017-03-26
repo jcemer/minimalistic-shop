@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import _find from 'lodash/find'
 
 import { addToCart } from '../actions/cart'
-import ProductDetail from '../components/product-detail'
+import ProductDetail from '../components/ProductDetail'
 
-export function ProductDetailPartial({ isReady, item, addToCart }) {
+export const ProductDetailContainer = ({ isReady, item, addToCart }) => {
   if (!isReady) return null
   if (!item) return <span>Product not found</span>
 
@@ -30,4 +30,4 @@ export const mapStateToProps = (
   return { isReady, item: _find(items, { _id }) }
 }
 
-export default connect(mapStateToProps, { addToCart })(ProductDetailPartial)
+export default connect(mapStateToProps, { addToCart })(ProductDetailContainer)

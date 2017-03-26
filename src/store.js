@@ -4,10 +4,12 @@ import thunk from 'redux-thunk'
 
 import reducer from './reducers'
 
-export default function configureStore(initialState) {
+const configureStore = (initialState) => {
   return createStore(
     reducer,
     initialState,
     applyMiddleware(thunk, promiseMiddleware())
   )
 }
+
+export default configureStore

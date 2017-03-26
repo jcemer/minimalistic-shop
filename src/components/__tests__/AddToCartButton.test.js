@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import AddToCartButton from '../add-to-cart-button'
+import AddToCartButton from '../AddToCartButton'
 
 describe('<AddToCartButton />', () => {
   describe('with remaning stock', () => {

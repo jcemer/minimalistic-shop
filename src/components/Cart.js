@@ -2,9 +2,9 @@ import React, { PropTypes } from 'react'
 import _map from 'lodash/map'
 import _isEmpty from 'lodash/isEmpty'
 
-import CartItem from './cart-item'
+import CartItem from './CartItem'
 
-export default function Cart({ purchased, items, checkout }) {
+const Cart = ({ purchased, items, checkout }) => {
   if (purchased) {
     return (
       <div className="ui message green">Well done. Thank you!</div>
@@ -40,3 +40,5 @@ Cart.propTypes = {
   ).isRequired,
   checkout: PropTypes.func.isRequired
 }
+
+export default Cart
