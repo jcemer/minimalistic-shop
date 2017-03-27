@@ -12,16 +12,20 @@ describe('addToCart', () => {
 
     expect(dispatch).toHaveBeenCalledWith({
       type: 'ADD_TO_CART',
-      product: { _id, image: 'url' }
+      payload: { _id, image: 'url' }
     })
   })
 
-  it('should do nothing with ADD_TO_CART when there is no stock', () => {
+  it('should call dispatch with ADD_TO_CART and error when there is no stock', () => {
     const dispatch = jest.fn()
     const items = [{ _id, image: 'url', stock: { remaining: 0 } }]
 
     addToCartId(dispatch, () => ({ products: { items } }))
 
-    expect(dispatch).not.toHaveBeenCalled()
+    expect(dispatch).toHaveBeenCalledWith({
+      type: 'ADD_TO_CART',
+      payload: expect.any(Error),
+      error: true
+    })
   })
 })

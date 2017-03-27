@@ -13,7 +13,7 @@ describe('cartReducer', () => {
       '356': { _id: '356', image: 'url', quantity: 20 },
       '123': { _id: '123', image: 'url', quantity: 2 }
     }
-    const state = cartReducer({ items }, { type: 'ADD_TO_CART', product: { _id: '123', image: 'url' } })
+    const state = cartReducer({ items }, { type: 'ADD_TO_CART', payload: { _id: '123', image: 'url' } })
 
     expect(state.items['123'].quantity).toEqual(3)
   })

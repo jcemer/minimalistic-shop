@@ -6,7 +6,13 @@ export const addToCart = _id => (dispatch, getState) => {
   if (_get(product, 'stock.remaining', 0) > 0) {
     dispatch({
       type: 'ADD_TO_CART',
-      product: { _id, image: product.image }
+      payload: { _id, image: product.image }
+    })
+  } else {
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: new Error('There are not reminaing stock.'),
+      error: true
     })
   }
 }

@@ -8,7 +8,7 @@ const initialState = {
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'ADD_TO_CART':
-      const { _id, image } = action.product
+      const { _id, image } = action.payload
       const quantity = _get(state.items[_id], 'quantity', 0) + 1
 
       return {
