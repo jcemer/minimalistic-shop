@@ -5,7 +5,7 @@ describe('addToCart', () => {
   const addToCartId = addToCart(_id)
 
   it('should call dispatch with ADD_TO_CART when there is stock', () => {
-    const dispatch = jasmine.createSpy('spy')
+    const dispatch = jest.fn()
     const items = [{ _id, image: 'url', stock: { remaining: 2 } }]
 
     addToCartId(dispatch, () => ({ products: { items } }))
@@ -17,7 +17,7 @@ describe('addToCart', () => {
   })
 
   it('should do nothing with ADD_TO_CART when there is no stock', () => {
-    const dispatch = jasmine.createSpy('spy')
+    const dispatch = jest.fn()
     const items = [{ _id, image: 'url', stock: { remaining: 0 } }]
 
     addToCartId(dispatch, () => ({ products: { items } }))

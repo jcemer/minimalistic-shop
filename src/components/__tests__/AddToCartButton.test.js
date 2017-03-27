@@ -5,7 +5,7 @@ import AddToCartButton from '../AddToCartButton'
 
 describe('<AddToCartButton />', () => {
   describe('with remaning stock', () => {
-    const addToCart = jasmine.createSpy('spy')
+    const addToCart = jest.fn()
     const wrapper = shallow(<AddToCartButton _id='123' stock={{ remaining: 1 }} addToCart={addToCart} />)
 
     it('should render a enable button', () => {
@@ -21,7 +21,7 @@ describe('<AddToCartButton />', () => {
   })
 
   describe('with no remaning stock', () => {
-    const addToCart = jasmine.createSpy('spy')
+    const addToCart = jest.fn()
     const wrapper = shallow(<AddToCartButton _id='123' stock={{ remaining: 0 }} addToCart={addToCart} />)
 
     it('should render a disabled button with', () => {
