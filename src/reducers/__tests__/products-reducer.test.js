@@ -1,3 +1,4 @@
+import { PRODUCTS_FETCH, CART_ITEM_ADD } from '../../action-types'
 import productsReducer from '../products-reducer'
 
 describe('productsReducer', () => {
@@ -8,25 +9,25 @@ describe('productsReducer', () => {
     expect(state).toBe(givenState)
   })
 
-  it('should returns isPending for FETCH_PRODUCTS_PENDING', () => {
-    const state = productsReducer({}, { type: 'FETCH_PRODUCTS_PENDING' })
+  it('should returns isPending for PRODUCTS_FETCH_PENDING', () => {
+    const state = productsReducer({}, { type: PRODUCTS_FETCH.PENDING })
 
     expect(state).toEqual({ isPending: true, isReady: false, items: [] })
   })
 
-  it('should returns isReady and items for FETCH_PRODUCTS_FULFILLED', () => {
+  it('should returns isReady and items for PRODUCTS_FETCH_FULFILLED', () => {
     const items = []
-    const state = productsReducer({}, { type: 'FETCH_PRODUCTS_FULFILLED', payload: items })
+    const state = productsReducer({}, { type: PRODUCTS_FETCH.FULFILLED, payload: items })
 
     expect(state).toEqual({ isPending: false, isReady: true, items })
   })
 
-  it('should returns items with reduced remaining stock for ADD_TO_CART', () => {
+  it('should returns items with reduced remaining stock for CART_ITEM_ADD', () => {
     const items = [
       { _id: '356', stock: { remaining: 20 } },
       { _id: '123', stock: { remaining: 2 } }
     ]
-    const state = productsReducer({ items }, { type: 'ADD_TO_CART', product: { _id: '123' } })
+    const state = productsReducer({ items }, { type: CART_ITEM_ADD, payload: { _id: '123' } })
 
     expect(state.items[1].stock.remaining).toEqual(1)
   })

@@ -1,3 +1,5 @@
+import { PRODUCTS_FETCH, CART_ITEM_ADD } from '../action-types'
+
 const initialState = {
   isPending: false,
   isReady: false,
@@ -6,7 +8,7 @@ const initialState = {
 
 const productsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCH_PRODUCTS_PENDING':
+    case PRODUCTS_FETCH.PENDING:
       return {
         ...state,
         isPending: true,
@@ -14,7 +16,7 @@ const productsReducer = (state = initialState, action) => {
         items: []
       }
 
-    case 'FETCH_PRODUCTS_FULFILLED':
+    case PRODUCTS_FETCH.FULFILLED:
       return {
         ...state,
         isPending: false,
@@ -22,8 +24,8 @@ const productsReducer = (state = initialState, action) => {
         items: action.payload,
       }
 
-    case 'ADD_TO_CART':
-      const { _id } = action.product
+    case CART_ITEM_ADD:
+      const { _id } = action.payload
       return {
         ...state,
         items: state.items.map(item =>

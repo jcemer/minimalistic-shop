@@ -1,3 +1,4 @@
+import { CART_ITEM_ADD, CHECKOUT } from '../../action-types'
 import cartReducer from '../cart-reducer'
 
 describe('cartReducer', () => {
@@ -8,12 +9,12 @@ describe('cartReducer', () => {
     expect(state).toBe(givenState)
   })
 
-  it('should returns items with improved quantity for ADD_TO_CART', () => {
+  it('should returns items with improved quantity for CART_ITEM_ADD', () => {
     const items = {
       '356': { _id: '356', image: 'url', quantity: 20 },
       '123': { _id: '123', image: 'url', quantity: 2 }
     }
-    const state = cartReducer({ items }, { type: 'ADD_TO_CART', payload: { _id: '123', image: 'url' } })
+    const state = cartReducer({ items }, { type: CART_ITEM_ADD, payload: { _id: '123', image: 'url' } })
 
     expect(state.items['123'].quantity).toEqual(3)
   })
@@ -22,7 +23,7 @@ describe('cartReducer', () => {
     const items = {
       '356': { _id: '356', image: 'url', quantity: 20 }
     }
-    const state = cartReducer({ items }, { type: 'CHECKOUT' })
+    const state = cartReducer({ items }, { type: CHECKOUT })
 
     expect(state).toEqual({ purchased: true, items: {} })
   })

@@ -1,4 +1,5 @@
 import _get from 'lodash/get'
+import { CART_ITEM_ADD, CHECKOUT } from '../action-types'
 
 const initialState = {
   purchased: false,
@@ -7,7 +8,7 @@ const initialState = {
 
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'ADD_TO_CART':
+    case CART_ITEM_ADD:
       const { _id, image } = action.payload
       const quantity = _get(state.items[_id], 'quantity', 0) + 1
 
@@ -20,7 +21,7 @@ const cartReducer = (state = initialState, action) => {
         }
       }
 
-    case 'CHECKOUT':
+    case CHECKOUT:
       return {
         ...state,
         purchased: true,
