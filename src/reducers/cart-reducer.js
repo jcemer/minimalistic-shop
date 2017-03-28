@@ -1,4 +1,6 @@
+import { handleActions } from 'redux-actions'
 import _get from 'lodash/get'
+
 import { CART_ITEM_ADD, CHECKOUT } from '../action-types'
 
 const initialState = {
@@ -6,31 +8,26 @@ const initialState = {
   items: {}
 }
 
-const cartReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case CART_ITEM_ADD:
-      const { _id, image } = action.payload
-      const quantity = _get(state.items[_id], 'quantity', 0) + 1
+const cartReducer = handleActions({
+  [CART_ITEM_ADD]: (state, action) => {
+    const { _id, image } = action.payload
+    const quantity = _get(state.items[_id], 'quantity', 0) + 1
 
-      return {
-        ...state,
-        purchased: false,
-        items: {
-          ...state.items,
-          [_id]: { _id, image, quantity }
-        }
+    return {
+      ...state,
+      purchased: false,
+      items: {
+        ...state.items,
+        [_id]: { _id, image, quantity }
       }
+    }
+  },
 
-    case CHECKOUT:
-      return {
-        ...state,
-        purchased: true,
-        items: {}
-      }
-
-    default:
-      return state
-  }
-}
+  [CHECKOUT]: state => ({
+    ...state,
+    purchased: true,
+    items: {}
+  })
+}, initialState)
 
 export default cartReducer
