@@ -1,0 +1,57 @@
+exports[`ProductDetailContainer <Component /> should render the proper HTML of ProductDetail with item 1`] = `
+<div
+  class="ui container">
+  <div
+    class="ui breadcrumb">
+    <a
+      class="section"
+      href="/">
+      Home
+    </a>
+    <i
+      class="right angle icon divider" />
+    <div
+      class="active section">
+      Product
+    </div>
+  </div>
+  <div
+    class="ui unstackable items">
+    <div
+      class="item">
+      <div
+        class="image">
+        <img
+          alt="Product 123"
+          src="url" />
+      </div>
+      <div
+        class="content">
+        <div
+          class="ui header">
+          Product 123
+        </div>
+        <div
+          class="meta">
+          Price $1
+        </div>
+        <div
+          class="description">
+          Description: bla
+        </div>
+        <div
+          class="extra">
+          Remaining stock: 1 item(s)
+        </div>
+        <div
+          class="extra">
+          <button
+            class="ui green button">
+            Add to cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

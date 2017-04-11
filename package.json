@@ -4,7 +4,6 @@
   "homepage": "http://jcemer.com/minimalistic-shop/",
   "dependencies": {
     "classnames": "^2.2.5",
-    "enzyme": "^2.7.1",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -18,6 +17,8 @@
     "semantic-ui-css": "^2.2.9"
   },
   "devDependencies": {
+    "enzyme": "^2.8.0",
+    "enzyme-to-json": "^1.5.0",
     "gh-pages": "^0.12.0",
     "react-addons-test-utils": "^15.4.2",
     "react-scripts": "0.9.5"

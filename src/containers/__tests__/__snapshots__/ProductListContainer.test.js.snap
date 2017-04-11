@@ -1,0 +1,28 @@
+exports[`ProductListContainer <Component /> should render the proper HTML of ProductList with items 1`] = `
+<div
+  class="ui five column doubling cards">
+  <div
+    class="ui card">
+    <a
+      class="ui image"
+      href="/product/123">
+      <img
+        alt="Product 123"
+        src="url" />
+    </a>
+    <div
+      class="content">
+      <div>
+        Price $1
+      </div>
+    </div>
+    <div
+      class="extra content">
+      <button
+        class="ui green button fluid">
+        Add to cart
+      </button>
+    </div>
+  </div>
+</div>
+`;

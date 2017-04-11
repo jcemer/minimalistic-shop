@@ -1,5 +1,7 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import { shallow, render } from 'enzyme'
+import toJson from 'enzyme-to-json'
+import { MemoryRouter } from 'react-router-dom'
 
 import { ProductListContainer, mapStateToProps } from '../ProductListContainer'
 import ProductList from '../../components/ProductList'
@@ -19,6 +21,17 @@ describe('ProductListContainer', () => {
       const wrapper = shallow(<ProductListContainer addToCart={addToCart} isReady items={items} />)
 
       expect(wrapper.contains(<ProductList addToCart={addToCart} items={items} />)).toBe(true)
+    })
+
+    it('should render the proper HTML of ProductList with items', () => {
+      const items = [{ _id: '123', image: 'url', price: '$1', stock: { remaining: 2 } }]
+      const wrapper = render(
+        <MemoryRouter>
+          <ProductListContainer addToCart={addToCart} isReady items={items} />
+        </MemoryRouter>
+      )
+
+      expect(toJson(wrapper)).toMatchSnapshot()
     })
   })
 

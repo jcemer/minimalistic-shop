@@ -1,0 +1,36 @@
+exports[`CartContainer <Component /> should render the proper HTML of Cart with items 1`] = `
+<div>
+  <div
+    class="ui header">
+    Shopping Cart
+  </div>
+  <div>
+    <div
+      class="ui unstackable divided items">
+      <div
+        class="ui item">
+        <div
+          class="ui tiny image">
+          <img
+            alt="Product 123"
+            src="url" />
+        </div>
+        <div
+          class="middle aligned content">
+          <div
+            class="ui tiny header">
+            Product 123
+          </div>
+          <div>
+            Quantity: 2
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="ui button fluid blue">
+      Checkout
+    </button>
+  </div>
+</div>
+`;
